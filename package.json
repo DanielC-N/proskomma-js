@@ -56,7 +56,6 @@
     "@babel/register": "^7.18.9",
     "ajv": "^8.11.0",
     "babel-loader": "^8.2.5",
-    "babel-tape-runner": "^3.0.0",
     "eslint": "^8.23.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-import": "^2.26.0",
