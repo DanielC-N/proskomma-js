@@ -13,7 +13,7 @@
     "coverage": "node_modules/nyc/bin/nyc.js tape -r @babel/register test/code/*.cjs",
     "build": "rm -fr dist && webpack --mode production --config webpack.prod.js",
     "prepublishOnly": "rm -fr dist && npm run build",
-    "serialize": "tape -r @babel/register test/code/serialize.js"
+    "serialize": "tape -r @babel/register test/code/serialize.cjs"
   },
   "repository": {
     "type": "git",
