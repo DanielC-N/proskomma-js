@@ -13,13 +13,14 @@ module.exports = {
     filename: 'index.js',
     library: 'index',
     globalObject: "this",
-    libraryTarget: 'commonjs2'
+    libraryTarget: 'commonjs2',
+    hashFunction: "xxhash64"
   },
   externals: {},
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\.m?js$/,
         include: path.join(__dirname, 'src'),
         exclude: path.join(__dirname, '/node_modules/'),
         loader: 'babel-loader',
@@ -34,10 +35,18 @@ module.exports = {
       }
     ]
   },
-  node: {
-    child_process: 'empty',
-    fs: 'empty',
-    // "os": require.resolve("os-browserify/browser"),
-    // "stream": require.resolve("stream-browserify")
-  }
+  resolve: {
+    fallback: {
+      fs : false,
+      string_decoder: false,
+      stream: false,
+      crypto: false,
+      buffer: false
+    }
+  },
+  // node: {
+  // child_process: 'empty',
+  //   // "os": require.resolve("os-browserify/browser"),
+  //   // "stream": require.resolve("stream-browserify")
+  // }
 };

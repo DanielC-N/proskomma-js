@@ -1,11 +1,13 @@
 module.exports = {
-  'presets': [
+  "presets": [
     [
-      '@babel/preset-env',
+      "@babel/preset-env",
       {
-        'targets': {
-          'esmodules': true,
+        "targets": {
+          "esmodules": true,
         },
+        useBuiltIns: "entry",
+        corejs: "3.25.1",
       },
     ],
   ],
