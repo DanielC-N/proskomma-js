@@ -1,4 +1,6 @@
 var path = require('path');
+const webpack = require('webpack');
+const NodePolyfillPlugin = require('node-polyfill-webpack-plugin');
 
 module.exports = {
   entry: './src/index.js',
@@ -37,16 +39,29 @@ module.exports = {
   },
   resolve: {
     fallback: {
-      fs : false,
+      fs: false,
       string_decoder: false,
-      stream: false,
+      stream: require.resolve('stream'),
       crypto: false,
-      buffer: false
+      child_process: "empty",
+      buffer: require.resolve('buffer/'),
+      constants: require.resolve("constants-browserify"),
+      assert: require.resolve("assert/"),
+      path: require.resolve("path-browserify"),
+      util: require.resolve("util/")
+    },
+    alias: {
+      process: "process/browser"
     }
   },
-  // node: {
-  // child_process: 'empty',
-  //   // "os": require.resolve("os-browserify/browser"),
-  //   // "stream": require.resolve("stream-browserify")
-  // }
+  plugins: [
+    new webpack.ProvidePlugin({
+      Buffer: ['buffer', 'Buffer'],
+    }),
+    new webpack.ProvidePlugin({
+      process: 'process/browser',
+    }),
+    new NodePolyfillPlugin()
+  ],
+  target: 'node'
 };

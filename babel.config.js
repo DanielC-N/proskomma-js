@@ -1,4 +1,10 @@
 module.exports = {
+  "assumptions": {
+    "noDocumentAll": true,
+    "pureGetters": true,
+    "iterableIsArray": true,
+    "ignoreToPrimitiveHint": true
+  },
   "presets": [
     [
       "@babel/preset-env",
@@ -7,8 +13,8 @@ module.exports = {
           "esmodules": true,
         },
         useBuiltIns: "entry",
-        corejs: "3.25.1",
-      },
+        corejs: "3.25.1"
+      }
     ],
   ],
 };
